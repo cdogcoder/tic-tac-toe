@@ -30,3 +30,11 @@ body {
     align-items: center;
 }
 
+.game-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.game-buttons button {
+    padding: .15rem .75rem;
+}
