@@ -1,1 +1,3 @@
 # tic-tac-toe
+
+Hey there everyone! This is the 2nd project that I will be doing for the JavaScript course of the Odin Project! This time, I'll be building an awesome multiplayer tic-tac-toe game, which will hopefully allow me to demonstrate my proficiency in a number of intermediate to advanced JavaScript concepts. More specifically, I will be focusing on incorporating factory functions and module patterns throughout my JavaScript code. Additionally, any media that is used in this project will be linked below; please go show the creators some love! And with that said, thank you for viewing this repo and I hope you like the project!
