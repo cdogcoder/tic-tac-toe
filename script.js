@@ -22,7 +22,6 @@
 const gameBoard = function(playerOneName, playerTwoName) {
     const playerOne = playerOneName;
     const playerTwo = playerTwoName;
-
     let turnToggle = 1;
     const waysToWin = {
         'straight': function(mark) {
@@ -50,6 +49,7 @@ const gameBoard = function(playerOneName, playerTwoName) {
         }
     }
     const numberOfSpacesOnBoard = document.querySelectorAll(".game-board > *").length;
+    const outputContainer = document.querySelector(".output");
     const board = {};
     for (let spaceCount = 1; spaceCount < numberOfSpacesOnBoard+1; spaceCount++) {
         board['space-'+spaceCount] = '';
@@ -73,14 +73,14 @@ const gameBoard = function(playerOneName, playerTwoName) {
     }
     const checkStatus = function() {
         if (waysToWin['straight']("X") || waysToWin['diagonal']("X")) {
-            console.log(`${playerOneName} wins!`);
+            outputContainer.textContent = `${playerOneName} wins!`;
             return true;
         } 
         else if (waysToWin['straight']("O") || waysToWin['diagonal']("O")) {
-            console.log(`${playerTwoName} wins!`);
+            outputContainer.textContent = `${playerTwoName} wins!`;
             return true;
         }
-        console.log("Nothing yet...")
+        outputContainer.textContent = "Nothing yet...";
         return false;
     }
 
