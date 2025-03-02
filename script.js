@@ -88,7 +88,8 @@ const gameBoard = function(playerOneName, playerTwoName) {
 }
 
 const startGameButton = document.querySelector(".start-game-button");
-startGameButton.addEventListener("click", () => {
+const startGame = () => {
+    startGameButton.removeEventListener("click", startGame);
     const gameBoardSpaces = document.querySelectorAll("[class^='space']");
     const playerOne = prompt("Who is the first player? This person will be X:");
     const playerTwo = prompt("Who is the second player? This person will be O:")
@@ -96,11 +97,11 @@ startGameButton.addEventListener("click", () => {
     const placeMark = (event) => {
         board.writeMark(event.target, event.target.className);
         if (board.checkStatus()) {
-            console.log("hi")
             gameBoardSpaces.forEach((space) => space.removeEventListener("click", placeMark));
         }
     };
     gameBoardSpaces.forEach((space) => {
-        space.addEventListener("click", placeMark)
+        space.addEventListener("click", placeMark);
     })
-})
+}
+startGameButton.addEventListener("click", startGame);
