@@ -72,12 +72,24 @@ const gameBoard = function(playerOneName, playerTwoName) {
         
     }
     const checkStatus = function() {
+        let isBoardFull = true;
+        for (space in board) {
+            if (board[space] == "") {
+                isBoardFull = false;
+                break;
+            }
+        }
+        console.log(isBoardFull)
         if (waysToWin['straight']("X") || waysToWin['diagonal']("X")) {
             outputContainer.textContent = `${playerOneName} wins!`;
             return true;
         } 
         else if (waysToWin['straight']("O") || waysToWin['diagonal']("O")) {
             outputContainer.textContent = `${playerTwoName} wins!`;
+            return true;
+        }
+        else if (isBoardFull) {
+            outputContainer.textContent = "DAMN! None of y'all won...";
             return true;
         }
         outputContainer.textContent = "Nothing yet...";
