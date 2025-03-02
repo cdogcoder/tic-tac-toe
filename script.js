@@ -21,6 +21,31 @@
 
 const gameBoard = (function() {
     let turnToggle = 1;
+    const waysToWin = {
+        'straight': function(mark) {
+            for (let i = 1; i <= 3; i++) {
+                let firstSpace = "space-" + i;
+                let secondSpace = "space-" + (i+1);
+                let thirdSpace = "space-" + (i+2);
+                let topSpace = "space-" + i;
+                let middleSpace = "space-" + (i+3);
+                let bottomSpace = "space-" + (i+6);
+                let straightAcross = board[firstSpace] == mark && board[secondSpace] == mark && board[thirdSpace] == mark;
+                let straightDown = board[topSpace] == mark && board[middleSpace] == mark && board[bottomSpace] == mark
+                if (straightAcross || straightDown) {
+                    return true;
+                }
+            }
+            return false;
+        },
+        'diagonal': function(mark) {
+            if ((board["space-1"] == mark && board["space-5"] == mark && board["space-9"] == mark) || 
+            (board["space-3"] == mark && board["space-5"] == mark && board["space-7"] == mark)) {
+                return true;
+            }
+            return false;
+        }
+    }
     const numberOfSpacesOnBoard = document.querySelectorAll(".game-board > *").length;
     const board = {};
     for (let spaceCount = 1; spaceCount < numberOfSpacesOnBoard+1; spaceCount++) {
@@ -35,5 +60,8 @@ const gameBoard = (function() {
             board[space] = "O";
             turnToggle = 1;
         }
+    }
+    const checkStatus = function() {
+
     }
 })()
