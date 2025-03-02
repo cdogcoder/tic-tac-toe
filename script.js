@@ -5,7 +5,7 @@
 //    to look up what mark is placed in which spaces,
 //    as well as methods to check the status of the game
 //    (as in, has a game been won and if so, provide an
-//    appropriate message)and update the data structure
+//    appropriate message) and update the data structure
 //    that holds all the marks on the board with new marks
 //    as the players progress through the game.
 // 2. Write a function that starts the game and assign it
@@ -17,3 +17,12 @@
 //    mark for one player has been written for a specific
 //    turn, the function should realize that the next mark
 //    that is placed should be the one of the other player.
+
+
+const gameBoard = (function() {
+    const numberOfSpacesOnBoard = document.querySelectorAll(".game-board > *").length;
+    const board = {};
+    for (let spaceCount = 1; spaceCount < numberOfSpacesOnBoard+1; spaceCount++) {
+        board['space-'+spaceCount] = '';
+    }
+})()
