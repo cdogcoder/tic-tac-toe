@@ -102,6 +102,18 @@ const startGame = () => {
     };
     gameBoardSpaces.forEach((space) => {
         space.addEventListener("click", placeMark);
-    })
+    });
+
+    const resetGameButton = document.querySelector(".reset-game-button");
+    const resetGame = () => {
+        gameBoardSpaces.forEach((space) => {
+            space.textContent = "";
+            space.removeEventListener("click", placeMark);
+        });
+        const outputContainer = document.querySelector(".output");
+        outputContainer.textContent = "";
+        startGameButton.addEventListener("click", startGame);
+    }
+    resetGameButton.addEventListener("click", resetGame);
 }
 startGameButton.addEventListener("click", startGame);
