@@ -19,7 +19,10 @@
 //    that is placed should be the one of the other player.
 
 
-const gameBoard = (function() {
+const gameBoard = function(playerOneName, playerTwoName) {
+    const playerOne = playerOneName;
+    const playerTwo = playerTwoName;
+
     let turnToggle = 1;
     const waysToWin = {
         'straight': function(mark) {
@@ -67,15 +70,23 @@ const gameBoard = (function() {
     }
     const checkStatus = function() {
         if (waysToWin['straight']("X") || waysToWin['diagonal']("X")) {
-            console.log("X");
+            console.log(`${playerOneName} wins!`);
             return true;
         } 
         else if (waysToWin['straight']("O") || waysToWin['diagonal']("O")) {
-            console.log("O");
+            console.log(`${playerTwoName} wins!`);
             return true;
         }
+        console.log("Nothing yet...")
         return false;
     }
 
     return { writeMark, checkStatus };
-})()
+}
+
+const startGameButton = document.querySelector(".start-game-button");
+startGameButton.addEventListener("click", () => {
+    const playerOne = prompt("Who is the first player? This person will be X:");
+    const playerTwo = prompt("Who is the second player? This person will be O:")
+    gameBoard(playerOne, playerTwo);
+})
