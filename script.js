@@ -26,9 +26,9 @@ const gameBoard = function(playerOneName, playerTwoName) {
     const waysToWin = {
         'straight': function(mark) {
             for (let i = 1; i <= 3; i++) {
-                let firstSpace = "space-" + i;
-                let secondSpace = "space-" + (i+1);
-                let thirdSpace = "space-" + (i+2);
+                let firstSpace = "space-" + (3*i-2);
+                let secondSpace = "space-" + (3*i-1);
+                let thirdSpace = "space-" + (3*i);
                 let topSpace = "space-" + i;
                 let middleSpace = "space-" + (i+3);
                 let bottomSpace = "space-" + (i+6);
