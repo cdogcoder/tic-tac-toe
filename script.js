@@ -52,14 +52,18 @@ const gameBoard = (function() {
         board['space-'+spaceCount] = '';
     }
     const writeMark = function(space) {
-        if (turnToggle) {
-            board[space] = "X";
-            turnToggle = 0;
+        if (board[space] == "") {
+            if (turnToggle) {
+                board[space] = "X";
+                turnToggle = 0;
+            }
+            else {
+                board[space] = "O";
+                turnToggle = 1;
+            }
         }
-        else {
-            board[space] = "O";
-            turnToggle = 1;
-        }
+
+        
     }
     const checkStatus = function() {
         if (waysToWin['straight']("X") || waysToWin['diagonal']("X")) {
