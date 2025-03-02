@@ -93,9 +93,14 @@ startGameButton.addEventListener("click", () => {
     const playerOne = prompt("Who is the first player? This person will be X:");
     const playerTwo = prompt("Who is the second player? This person will be O:")
     const board = gameBoard(playerOne, playerTwo);
+    const placeMark = (event) => {
+        board.writeMark(event.target, event.target.className);
+        if (board.checkStatus()) {
+            console.log("hi")
+            gameBoardSpaces.forEach((space) => space.removeEventListener("click", placeMark));
+        }
+    };
     gameBoardSpaces.forEach((space) => {
-        space.addEventListener("click", () => {
-            board.writeMark(space, space.className)
-        })
+        space.addEventListener("click", placeMark)
     })
 })
