@@ -20,9 +20,20 @@
 
 
 const gameBoard = (function() {
+    let turnToggle = 1;
     const numberOfSpacesOnBoard = document.querySelectorAll(".game-board > *").length;
     const board = {};
     for (let spaceCount = 1; spaceCount < numberOfSpacesOnBoard+1; spaceCount++) {
         board['space-'+spaceCount] = '';
+    }
+    const writeMark = function(space) {
+        if (turnToggle) {
+            board[space] = "X";
+            turnToggle = 0;
+        }
+        else {
+            board[space] = "O";
+            turnToggle = 1;
+        }
     }
 })()
