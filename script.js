@@ -76,4 +76,6 @@ const gameBoard = (function() {
         }
         return false;
     }
+
+    return { writeMark, checkStatus };
 })()
