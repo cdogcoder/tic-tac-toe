@@ -54,16 +54,19 @@ const gameBoard = function(playerOneName, playerTwoName) {
     for (let spaceCount = 1; spaceCount < numberOfSpacesOnBoard+1; spaceCount++) {
         board['space-'+spaceCount] = '';
     }
-    const writeMark = function(space) {
-        if (board[space] == "") {
+    const writeMark = function(space, spaceName) {
+        if (board[spaceName] == "") {
             if (turnToggle) {
-                board[space] = "X";
+                space.textContent = "X";
+                board[spaceName] = "X";
                 turnToggle = 0;
             }
             else {
-                board[space] = "O";
+                space.textContent = "O";
+                board[spaceName] = "O";
                 turnToggle = 1;
             }
+            console.log(board);
         }
 
         
@@ -86,7 +89,13 @@ const gameBoard = function(playerOneName, playerTwoName) {
 
 const startGameButton = document.querySelector(".start-game-button");
 startGameButton.addEventListener("click", () => {
+    const gameBoardSpaces = document.querySelectorAll("[class^='space']");
     const playerOne = prompt("Who is the first player? This person will be X:");
     const playerTwo = prompt("Who is the second player? This person will be O:")
-    gameBoard(playerOne, playerTwo);
+    const board = gameBoard(playerOne, playerTwo);
+    gameBoardSpaces.forEach((space) => {
+        space.addEventListener("click", () => {
+            board.writeMark(space, space.className)
+        })
+    })
 })
