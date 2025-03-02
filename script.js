@@ -62,6 +62,14 @@ const gameBoard = (function() {
         }
     }
     const checkStatus = function() {
-
+        if (waysToWin['straight']("X") || waysToWin['diagonal']("X")) {
+            console.log("X");
+            return true;
+        } 
+        else if (waysToWin['straight']("O") || waysToWin['diagonal']("O")) {
+            console.log("O");
+            return true;
+        }
+        return false;
     }
 })()
